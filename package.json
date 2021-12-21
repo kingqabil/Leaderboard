@@ -1,7 +1,7 @@
 {
-  "name": "to-do-list",
+  "name": "Leaderboard",
   "version": "1.0.0",
-  "description": "Todolist",
+  "description": "Leaderboard",
   "devDependencies": {
     "css-loader": "^6.5.0",
     "html-webpack-plugin": "^5.5.0",
@@ -599,13 +599,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kingqabil/To-Do-List.git"
+    "url": "git+https://github.com/kingqabil/Leaderboard.git"
   },
   "keywords": [],
   "author": "SadiQ HabiL",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kingqabil/To-Do-List/issues"
+    "url": "https://github.com/kingqabil/Leaderboard/issues"
   },
-  "homepage": "https://github.com/kingqabil/To-Do-List#readme"
+  "homepage": "https://github.com/kingqabil/Leaderboard#readme"
 }
