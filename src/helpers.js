@@ -7,7 +7,7 @@ const spinner = document.querySelector('.spinner');
 const submit = document.querySelector('.submit');
 
 export default class Helper {
-  static async createNewGame() {
+ static async createNewGame() {
     if (!Utils.getLocal()) {
       try {
         const gameID = await Utils.generateID();
