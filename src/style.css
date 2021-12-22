@@ -1,12 +1,32 @@
-/* Reset Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;1,100;1,200;1,300;1,400;1,600;1,700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --primary-color-1: #e3fef3;
+  --primary-color-2: #5bf5e8;
+  --accent-color: #82f8e8;
+  --neutral-color-1: #0f1055;
+  --neutral-color-2: #06101d;
+  --white: #fff;
+  --font: 'Poppins', sans-serif;
+}
+
 html {
   overflow-x: hidden;
+}
+
+body {
+  font-size: 16px;
+  font-family: var(--font);
+  background: var(--primary-color-1);
+  position: relative;
+  min-height: 97vh;
+  transition: background ease-out 1s 0.1s;
 }
 
 ul > li {
@@ -15,17 +35,26 @@ ul > li {
 
 a {
   text-decoration: none;
+  color: var(--accent-color);
   cursor: pointer;
 }
 
-.error {
-  color: red;
-  font-size: 10px;
-  margin-bottom: 12px;
+main {
+  padding: 50px 10% 10px;
 }
 
-main {
-  margin: 5% 10%;
+h1 {
+  font-size: 2.5rem;
+}
+
+h1,
+h2 {
+  color: var(--neutral-color-1);
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
 }
 
 .main-container {
@@ -36,7 +65,7 @@ main {
 }
 
 .results {
-  width: 70%;
+  width: 80%;
 }
 
 .refresh-container {
@@ -47,17 +76,59 @@ main {
 }
 
 .refresh > button {
-  padding: 5px;
+  padding: 10px 20px;
+  background: var(--accent-color);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-family: var(--font);
+  border-radius: 2px;
+  transition: background ease-out 1s 0.1s;
+}
+
+.refresh > button:hover {
+  cursor: pointer;
+  background: var(--primary-color-2);
+  box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0 8px 16px -8px;
+}
+
+.refresh > button:focus {
+  outline: none;
+}
+
+.refresh > button .fas {
+  font-size: 14px;
+  margin-left: 5px;
 }
 
 .scores-container {
-  border: solid 4px gray;
-  padding: 10px;
-  border-radius: 8px;
+  border: solid 3px var(--primary-color-2);
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.scores-container > ul > li {
+  background: white;
+  padding: 10px 20px;
+  margin: 5px 0;
+  border-radius: 2px;
+  font-weight: 600;
+  word-wrap: break-word;
+  word-spacing: 150px;
+}
+
+.add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add > .score-heading {
+  margin-bottom: 20px;
 }
 
 .add > .add-form {
-  width: 80%;
+  width: 100%;
 }
 
 .add > .add-form > form {
@@ -65,18 +136,142 @@ main {
   flex-direction: column;
 }
 
-.add > .score-heading {
-  margin-bottom: 20px;
-}
-
 .add > .add-form > form input {
   width: 100%;
-  padding: 8px;
+  padding: 12px;
   margin-bottom: 20px;
+  border: none;
+  border-left: solid 7px gray;
+  font-family: var(--font);
+  border-radius: 2px;
+  transition: border-left ease-out 0.3s 0.1s;
+}
+
+.add > .add-form > form input::-webkit-outer-spin-button,
+.add > .add-form > form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.add > .add-form > form input:focus {
+  outline: none;
+  border-left: solid 7px var(--primary-color-2);
+}
+
+.add > .add-form > form input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .add > .add-form > form > button {
-  align-self: flex-end;
+  padding: 12px;
   width: 30%;
-  padding: 5px;
+  align-self: flex-end;
+  background: var(--accent-color);
+  border: none;
+  color: #fff;
+  font-family: var(--font);
+  font-size: 1rem;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 25px 50px -12px;
+  transition: background ease-out 1s 0.1s;
+}
+
+.add > .add-form > form > button:hover {
+  cursor: pointer;
+  background: var(--primary-color-2);
+  box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0 8px 16px -8px;
+}
+
+.add > .add-form > form > button:focus {
+  outline: none;
+  background: var(--neutral-color-1);
+}
+
+#modal {
+  position: absolute;
+  top: -100vh;
+  left: 25%;
+  right: 25%;
+  width: 50%;
+  padding: 15px 0;
+  background: #fff;
+  text-align: center;
+  transition: top ease-out 1s 0.01s;
+}
+
+.loading-spinner {
+  animation: rotate-forever linear infinite 0.8s;
+  height: 12px;
+  width: 12px;
+  border: 2px solid #fff;
+  border-right-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+@keyframes rotate-forever {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: var(--neutral-color-1);
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    grid-template-columns: 1fr;
+    gap: 50px 0;
+    margin: 5% auto;
+  }
+
+  .results {
+    width: 100%;
+  }
+
+  footer {
+    font-size: 11px;
+  }
+}
+
+.dark {
+  background: var(--neutral-color-2) !important;
+  color: var(--primary-color-1) !important;
+  transition: background ease-out 0.7s 0.1s;
+}
+
+.white {
+  background: var(--neutral-color-1) !important;
+  transition: background ease-out 0.7s 0.1s;
+}
+
+.input-dark {
+  background: var(--primary-color-1) !important;
+}
+
+.input-dark:focus {
+  border-left: solid 7px var(--neutral-color-1) !important;
+  transition: border-left ease-out 0.7s 0.1s;
+}
+
+.dark-control {
+  font-size: 25px;
+  cursor: pointer;
 }
