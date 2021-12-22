@@ -12,20 +12,23 @@ In this activity I will set up a JavaScript project for the Leaderboard list app
 
 ## Interaction with the Leaderboard API
 
-Each new game is created with the POST method using
+- Each new game is created with the POST method using
+
     {
         "name": "My cool new game"
     }
-This request returns a result that holds the unique ID for that game:
+
+- This request returns a result that holds the unique ID for that game:
 
   {
     "result": "Game with ID: Zl4d7IVkemOTTVg2fUdz added."
   }
-This gameID is saved in the localStorage automatically
 
-The two allowed actions are posting and getting of the scores
+- This gameID is saved in the localStorage automatically
 
-The POST request creates a new Leaderboard score for the given game sending user and score as parameters like this:
+- The two allowed actions are posting and getting of the scores
+
+- The POST request creates a new Leaderboard score for the given game sending user and score as parameters like this:
 
 Endpoint
 https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/:id/scores/
@@ -35,12 +38,14 @@ body parameters
     "user": "John Doe",
     "score": 42
 }
+
 and it returns
 
 {
     "result": "Leaderboard score created correctly."
 }
-The GET request returns data in JSON format like this:
+
+- The GET request returns data in JSON format like this:
 
 Endpoint
 https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/:id/scores/
