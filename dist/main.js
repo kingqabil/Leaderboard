@@ -116,7 +116,17 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n//# sourceURL=webpack://Leaderboard/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/api.js */ \"./src/modules/api.js\");\n\r\n\r\n\r\ndocument.querySelector('#submit').addEventListener('click', (e) => {\r\n  if (document.querySelector('#name').value !== '' && document.querySelector('#score').value !== '') {\r\n    e.preventDefault();\r\n    (0,_modules_api_js__WEBPACK_IMPORTED_MODULE_1__.postScore)();\r\n  }\r\n});\r\n\r\ndocument.querySelector('#refresh').addEventListener('click', () => (0,_modules_api_js__WEBPACK_IMPORTED_MODULE_1__.getScores)());\r\n\r\nwindow.addEventListener('load', () => (0,_modules_api_js__WEBPACK_IMPORTED_MODULE_1__.getScores)());\n\n//# sourceURL=webpack://Leaderboard/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/api.js":
+/*!****************************!*\
+  !*** ./src/modules/api.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getScores\": () => (/* binding */ getScores),\n/* harmony export */   \"postScore\": () => (/* binding */ postScore)\n/* harmony export */ });\nconst baseUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/x34jAfIEOe8sbnLr2WEb/scores';\r\n\r\nconst showScores = (scores) => {\r\n  const root = document.querySelector('#root');\r\n  root.textContent = '';\r\n  scores.forEach((item) => {\r\n    const li = document.createElement('li');\r\n    const userName = document.createElement('span');\r\n    const userScore = document.createElement('span');\r\n\r\n    li.classList = 'single-list-item l-height-2x';\r\n    userName.classList = 'user-name';\r\n    userScore.classList = 'user-score';\r\n\r\n    userName.textContent = item.user;\r\n    userScore.textContent = item.score;\r\n\r\n    li.append(userName, userScore);\r\n    root.appendChild(li);\r\n  });\r\n};\r\n\r\nconst getScores = async () => {\r\n  const res = await fetch(baseUrl);\r\n  const scores = await res.json();\r\n  showScores(scores.result);\r\n};\r\n\r\nconst postScore = async () => {\r\n  const newScore = {\r\n    user: document.querySelector('#name').value,\r\n    score: document.querySelector('#score').value,\r\n  };\r\n\r\n  (\r\n    await fetch(baseUrl, {\r\n      method: 'POST',\r\n      headers: {\r\n        'Content-type': 'application/json',\r\n      },\r\n      body: JSON.stringify(newScore),\r\n    })\r\n  ).json();\r\n\r\n  document.querySelector('#name').value = '';\r\n  document.querySelector('#score').value = '';\r\n};\r\n\r\n\n\n//# sourceURL=webpack://Leaderboard/./src/modules/api.js?");
 
 /***/ })
 
