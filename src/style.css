@@ -1,85 +1,82 @@
+/* Reset Styles */
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body {
-  padding: 4%;
+html {
+  overflow-x: hidden;
 }
 
-h1 {
-  font-weight: 900;
-  font-size: 3rem;
-}
-
-main {
-  padding: 2% 7%;
-  margin-top: 50px;
-}
-
-li {
+ul > li {
   list-style: none;
 }
 
-input {
-  margin-bottom: 16px;
+a {
+  text-decoration: none;
+  cursor: pointer;
 }
 
-button {
-  width: 10rem;
-  box-shadow: 2px 2px;
+.error {
+  color: red;
+  font-size: 10px;
+  margin-bottom: 12px;
 }
 
-button:hover {
-  background-color: white;
+main {
+  margin: 5% 10%;
 }
 
-button:focus {
-  background-color: cadetblue;
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 50px;
+  margin: 5% auto;
 }
 
-.b-radius {
-  border-radius: 7px;
+.results {
+  width: 70%;
 }
 
-.thick-border {
-  border: 3px solid black;
-}
-
-.d-flex {
+.refresh-container {
   display: flex;
-}
-
-.heading {
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
-.list {
-  flex: 6;
+.refresh > button {
+  padding: 5px;
 }
 
-.l-height-2x {
-  line-height: 2;
+.scores-container {
+  border: solid 4px gray;
+  padding: 10px;
+  border-radius: 8px;
 }
 
-.single-list-item:nth-child(odd) {
-  background-color: rgb(213, 219, 219);
+.add > .add-form {
+  width: 80%;
 }
 
-.list-heading {
-  justify-content: space-between;
-}
-
-.user-name {
-  padding: 5%;
-}
-
-#list-form {
+.add > .add-form > form {
+  display: flex;
   flex-direction: column;
-  flex: 4;
-  margin-left: 80px;
 }
 
-#submit {
+.add > .score-heading {
+  margin-bottom: 20px;
+}
+
+.add > .add-form > form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+}
+
+.add > .add-form > form > button {
   align-self: flex-end;
+  width: 30%;
+  padding: 5px;
 }
