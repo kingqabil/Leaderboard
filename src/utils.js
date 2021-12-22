@@ -5,7 +5,6 @@ const user = document.querySelector('#name');
 const score = document.querySelector('#score');
 
 export default class Utils {
-
   static startLoader(elem1, elem2) {
     elem2.classList.add('loading-spinner');
     elem1.innerHTML = 'Loading';
