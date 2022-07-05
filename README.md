@@ -7,7 +7,7 @@ In this activity I will set up a JavaScript project for the Leaderboard list app
 
 ## Live Demo 👀
 
-- [Click To See The Live Demo](https://kingqabil.github.io/Leaderboard/)
+- [Click To See The Live Demo](https://resilient-unicorn-1b69a3.netlify.app/)
 
 
 ## Interaction with the Leaderboard API
